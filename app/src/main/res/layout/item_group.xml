@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/group_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            app:cardCornerRadius="15dp"
+            android:padding="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profilePictureIV"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="50dp"
+                    android:layout_margin="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/groupImageView"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/_c3dda1d3c9e69fbadab86d1b3e1bac3"
+                        android:contentDescription="@string/profile_picture" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/groupNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toEndOf="@id/profilePictureIV"
+                    app:layout_constraintTop_toTopOf="@id/profilePictureIV"
+                    tools:text="Name" />
+
+                <TextView
+                    android:id="@+id/recentMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    tools:text="recent message"
+                    android:layout_marginTop="15dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    app:layout_constraintStart_toStartOf="@id/groupNameTextView"
+                    app:layout_constraintTop_toBottomOf="@id/groupNameTextView" />
+
+                <TextView
+                    android:id="@+id/latestTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    tools:text="18:35"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/groupNameTextView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

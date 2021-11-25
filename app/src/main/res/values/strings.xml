@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">chatApp</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="add_groups">Add groups</string>
+</resources>
