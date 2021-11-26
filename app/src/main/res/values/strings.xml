@@ -4,4 +4,9 @@
     <string name="add_groups">Add groups</string>
     <string name="group_name">Group Name</string>
     <string name="add">ADD</string>
+    <string name="send">Send</string>
+    <string name="message">Message...</string>
+    <string name="send_message">send message</string>
+    <string name="received_text">received Text</string>
+    <string name="send_text">send text</string>
 </resources>

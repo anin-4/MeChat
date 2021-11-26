@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/drawable/edit_text_drawable.xml" value="0.275" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/drawable/incoming_bubble.xml" value="0.275" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/drawable/outgoing_speech_bubble.xml" value="0.275" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/activity_main.xml" value="0.28020833333333334" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/add_group_dialog.xml" value="0.2586050724637681" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_chat.xml" value="0.25407608695652173" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_groups.xml" value="0.2086956590966153" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_login.xml" value="0.2942708333333333" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/item_group.xml" value="0.27219202898550726" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/received_text_item.xml" value="0.25407608695652173" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/send_text_item.xml" value="0.25407608695652173" />
       </map>
     </option>
   </component>
