@@ -52,7 +52,7 @@ class LoginFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.signInButton.setOnClickListener {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(BuildConfig.WEB_CLIENT)
+                .requestIdToken("your key")
                 .requestEmail()
                 .requestId()
                 .requestProfile()
