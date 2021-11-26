@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="14dp">
+    
+    <EditText
+        android:id="@+id/groupNameEditTextDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/group_name"
+        android:minHeight="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/groupNameAddButtonDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/add"
+        app:layout_constraintTop_toBottomOf="@id/groupNameEditTextDialog"
+        app:layout_constraintStart_toStartOf="@id/groupNameEditTextDialog"
+        app:layout_constraintEnd_toEndOf="@id/groupNameEditTextDialog"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

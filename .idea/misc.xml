@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/activity_main.xml" value="0.28020833333333334" />
-        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_groups.xml" value="0.2942708333333333" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/add_group_dialog.xml" value="0.2586050724637681" />
+        <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_groups.xml" value="0.2086956590966153" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/fragment_login.xml" value="0.2942708333333333" />
         <entry key="..\:/Android Projects/chatApp/app/src/main/res/layout/item_group.xml" value="0.27219202898550726" />
       </map>
