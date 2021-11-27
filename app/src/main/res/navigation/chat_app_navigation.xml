@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.chatapp.ui.fragments.LoginFragment"
+        android:name="com.example.chatapp.ui.login_fragment.LoginFragment"
         android:label="LoginFragment" >
         <action
             android:id="@+id/action_loginFragment_to_fragmentGroups"
@@ -14,6 +14,20 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentGroups"
-        android:name="com.example.chatapp.ui.fragments.DisplayGroupsFragment"
-        android:label="FragmentGroups" />
+        android:name="com.example.chatapp.ui.groups_fragment.DisplayGroupsFragment"
+        android:label="FragmentGroups" >
+        <action
+            android:id="@+id/action_fragmentGroups_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.chatapp.ui.chat_fragment.ChatFragment"
+        android:label="ChatFragment" >
+        <argument
+            android:name="group"
+            app:argType="com.example.chatapp.domain.models.Group"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

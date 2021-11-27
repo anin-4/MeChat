@@ -1,4 +1,4 @@
-package com.example.chatapp.ui.fragments
+package com.example.chatapp.ui.login_fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -52,7 +52,7 @@ class LoginFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.signInButton.setOnClickListener {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("your key")
+                .requestIdToken(BuildConfig.WEB_CLIENT)
                 .requestEmail()
                 .requestId()
                 .requestProfile()

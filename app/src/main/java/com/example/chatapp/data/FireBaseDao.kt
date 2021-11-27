@@ -3,6 +3,8 @@ package com.example.chatapp.data
 import android.util.Log
 import com.example.chatapp.domain.models.Group
 import com.example.chatapp.domain.models.Group.Companion.toGroup
+import com.example.chatapp.domain.models.Message
+import com.example.chatapp.domain.models.Message.Companion.toMessage
 import com.example.chatapp.domain.models.User
 import com.example.chatapp.utils.Constants.TAG
 import com.example.chatapp.utils.getCurrentDateTime
@@ -13,6 +15,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.tasks.await
+import java.lang.Exception
 
 class FireBaseDao {
 
@@ -52,5 +57,65 @@ class FireBaseDao {
                 listener.remove()
             }
         }
+    }
+
+
+    suspend fun loadInitialChat(groupId:String):List<Message>{
+        val groupMessage =db.collection("Message").document(groupId).collection("messages")
+        val list = mutableListOf<Message>()
+        try{
+            val hold =groupMessage
+                .orderBy("sendAt")
+                .get()
+                .await()
+
+            for(document in hold.documents){
+                document.toObject(Message::class.java)?.let { list.add(it) }
+            }
+        }catch (e:Exception){
+            Log.d(TAG, "loadInitialChat: error")
+        }
+
+        return list
+    }
+
+    suspend fun postMessage(groupId:String,messageTextNew:String){
+        val messageId = db.collection("Message").document(groupId).collection("messages").document().id
+
+        val newMessage = Message(
+            messageText = messageTextNew,
+            sentBy = Firebase.auth.currentUser?.uid,
+            sendAt = getCurrentDateTime().toString(),
+            senderName = Firebase.auth.currentUser?.displayName,
+            id = messageId
+        )
+
+        db.collection("Message").document(groupId).collection("messages").document(messageId).set(newMessage)
+    }
+
+    @ExperimentalCoroutinesApi
+    fun listenChat(groupId:String):Flow<List<Message>?>{
+        return callbackFlow {
+                    val listener = db
+                        .collection("Message")
+                        .document(groupId)
+                        .collection("messages")
+                        .orderBy("sendAt")
+                        .addSnapshotListener { value, error ->
+                            if (error != null) {
+                                Log.d(TAG, "listenChat: error!")
+                                return@addSnapshotListener
+                            }
+                            val map = value?.documents?.map {
+                                it.toMessage()
+                            }
+
+                            trySend(map).isSuccess
+                        }
+
+                    awaitClose {
+                        listener.remove()
+                    }
+                }
     }
 }

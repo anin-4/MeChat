@@ -1,4 +1,4 @@
-package com.example.chatapp.ui.viewmodels
+package com.example.chatapp.ui.groups_fragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

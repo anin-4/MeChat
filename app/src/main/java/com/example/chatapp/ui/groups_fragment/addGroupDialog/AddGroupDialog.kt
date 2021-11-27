@@ -1,4 +1,4 @@
-package com.example.chatapp.ui.addGroupDialog
+package com.example.chatapp.ui.groups_fragment.addGroupDialog
 
 import android.content.Context
 import android.os.Bundle
