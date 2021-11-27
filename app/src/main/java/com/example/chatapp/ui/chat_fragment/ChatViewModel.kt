@@ -16,7 +16,7 @@ class ChatViewModel:ViewModel() {
     val loadInitialChat:LiveData<List<Message>>
     get() = _loadInitialChat
 
-    var groupId:String =""
+    var groupId:String ="N0X33XGrMjh57OweVlLg" //currently hardcoded, will resolve that
 
     init {
         groupId?.let {
