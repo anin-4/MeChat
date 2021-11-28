@@ -10,7 +10,7 @@ data class Group(
     val createdBy:String?="",
     val groupId:String?="",
     val name:String?="",
-    val recentMessage:String?="",
+    var recentMessage:String?="",
     val timeOfLastMessage:String?="",
 
 ):Parcelable{

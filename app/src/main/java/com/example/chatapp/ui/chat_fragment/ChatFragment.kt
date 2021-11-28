@@ -44,9 +44,6 @@ class ChatFragment:Fragment() {
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-//        val gid = args.group?.groupId
-//        chatViewModel.groupId=gid
-
         binding.ChatsRecyclerView.apply {
             adapter=chatRecyclerViewAdapter
             layoutManager=LinearLayoutManager(requireContext())
@@ -59,10 +56,12 @@ class ChatFragment:Fragment() {
         viewModel.chats.observe(viewLifecycleOwner){
             Log.d(TAG, "onViewCreated: $it")
             chatRecyclerViewAdapter.submitList(it)
+
         }
 
         binding.sendMessageButton.setOnClickListener {
            val messageText= binding.sendMessageEditText.text.toString()
+            binding.sendMessageEditText.setText("")
             viewModel.putData(messageText)
         }
 

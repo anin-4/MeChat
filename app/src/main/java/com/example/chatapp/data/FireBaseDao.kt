@@ -91,6 +91,8 @@ class FireBaseDao {
         )
 
         db.collection("Message").document(groupId).collection("messages").document(messageId).set(newMessage)
+
+
     }
 
     @ExperimentalCoroutinesApi
@@ -109,6 +111,13 @@ class FireBaseDao {
                             val map = value?.documents?.map {
                                 it.toMessage()
                             }
+                            var finalMessage:String?=""
+                            finalMessage = try {
+                                map?.last()?.messageText
+                            }catch (e:Exception){
+                                "";
+                            }
+                            updateGroupFinalMessage(finalMessage,groupId)
 
                             trySend(map).isSuccess
                         }
@@ -117,5 +126,9 @@ class FireBaseDao {
                         listener.remove()
                     }
                 }
+    }
+
+    private fun updateGroupFinalMessage(finalMessage: String?="",groupId: String){
+        db.collection("Groups").document(groupId).update("recentMessage",finalMessage)
     }
 }
