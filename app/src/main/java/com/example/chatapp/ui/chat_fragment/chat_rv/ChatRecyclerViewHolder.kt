@@ -6,6 +6,7 @@ import androidx.viewbinding.ViewBinding
 import com.example.chatapp.databinding.ReceivedTextItemBinding
 import com.example.chatapp.databinding.SendTextItemBinding
 import com.example.chatapp.domain.models.Message
+import com.example.chatapp.utils.toString
 
 sealed class ChatRecyclerViewHolder(binding: ViewBinding):RecyclerView.ViewHolder(binding.root) {
 
@@ -14,7 +15,7 @@ sealed class ChatRecyclerViewHolder(binding: ViewBinding):RecyclerView.ViewHolde
                 binding.apply {
                     nameTagTextView.text=message.senderName
                     textMessageIncoming.text=message.messageText
-                    timeTextView.text=message.sendAt
+                    timeTextView.text=message.sendAt?.toDate()?.toString("yyyy/MM/dd HH:mm:ss")
                 }
             }
     }
@@ -23,7 +24,7 @@ sealed class ChatRecyclerViewHolder(binding: ViewBinding):RecyclerView.ViewHolde
         fun bind(message: Message){
             binding.apply {
                 textMessageOutgoing.text=message.messageText
-                timeTextViewSend.text=message.sendAt
+                timeTextViewSend.text=message.sendAt?.toDate()?.toString("yyyy/MM/dd HH:mm:ss")
             }
         }
     }

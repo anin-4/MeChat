@@ -1,6 +1,7 @@
 package com.example.chatapp.domain.models
 
 import android.os.Parcelable
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import kotlinx.parcelize.Parcelize
 
@@ -13,7 +14,7 @@ data class Group(
     var recentMessage:String?="",
     val timeOfLastMessage:String?="",
 
-):Parcelable{
+    ):Parcelable{
     companion object {
         fun DocumentSnapshot.toGroup(): Group {
             val createdAt = getString("createdAt")
@@ -22,7 +23,7 @@ data class Group(
             val name = getString("name")
             val recentMessage = getString("recentMessage")
             val timeOfLastMessage = getString("timeOfLastMessage")
-            return Group(createdAt, createdBy, groupId, name, recentMessage, timeOfLastMessage)
+            return Group(createdAt,createdBy,groupId, name, recentMessage, timeOfLastMessage)
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.chatapp.ui.groups_fragment.adapters
 
+import androidx.navigation.dynamicfeatures.fragment.R
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.databinding.ItemGroupBinding
 import com.example.chatapp.domain.models.Group
@@ -13,6 +14,7 @@ class GroupsRecyclerViewHolder(private val binding:ItemGroupBinding):RecyclerVie
             groupNameTextView.text=item.name
             latestTime.text=item.timeOfLastMessage
             recentMessage.text=item.recentMessage
+
             root.setOnClickListener {
                 onClickHandler?.invoke(item)
             }

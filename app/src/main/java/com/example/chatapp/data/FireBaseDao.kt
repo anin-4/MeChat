@@ -8,6 +8,8 @@ import com.example.chatapp.domain.models.Message.Companion.toMessage
 import com.example.chatapp.domain.models.User
 import com.example.chatapp.utils.Constants.TAG
 import com.example.chatapp.utils.getCurrentDateTime
+import com.example.chatapp.utils.toString
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -15,19 +17,17 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 
 class FireBaseDao {
 
     private val db = Firebase.firestore
 
-    suspend fun addUserIntoFireStore(user:User){
+   fun addUserIntoFireStore(user:User){
         db.collection("User").document(user.uid).set(user)
     }
 
-    suspend fun createGroup(groupName:String){
+   fun createGroup(groupName:String){
         val id = db.collection("Groups").document().id
         val newGroup = Group(
             createdAt = getCurrentDateTime().toString(),
@@ -43,7 +43,9 @@ class FireBaseDao {
     @ExperimentalCoroutinesApi
     fun getGroups(): Flow<List<Group>?> {
         return callbackFlow {
-            val listener = db.collection("Groups").addSnapshotListener { value, error ->
+            val listener = db.collection("Groups")
+                .orderBy("name")
+                .addSnapshotListener { value, error ->
                 if(error!=null){
                     Log.d(TAG, "getGroups: error occurred ")
                     return@addSnapshotListener
@@ -79,13 +81,13 @@ class FireBaseDao {
         return list
     }
 
-    suspend fun postMessage(groupId:String,messageTextNew:String){
+    fun postMessage(groupId:String,messageTextNew:String){
         val messageId = db.collection("Message").document(groupId).collection("messages").document().id
 
         val newMessage = Message(
             messageText = messageTextNew,
             sentBy = Firebase.auth.currentUser?.uid,
-            sendAt = getCurrentDateTime().toString(),
+            sendAt = Timestamp.now(),
             senderName = Firebase.auth.currentUser?.displayName,
             id = messageId
         )
@@ -111,14 +113,11 @@ class FireBaseDao {
                             val map = value?.documents?.map {
                                 it.toMessage()
                             }
-                            var finalMessage:String?=""
-                            finalMessage = try {
-                                map?.last()?.messageText
-                            }catch (e:Exception){
-                                "";
+                            map?.let {
+                                if (map.isNotEmpty()){
+                                    updateGroupFinalMessage(map.last(),groupId)
+                                }
                             }
-                            updateGroupFinalMessage(finalMessage,groupId)
-
                             trySend(map).isSuccess
                         }
 
@@ -128,7 +127,8 @@ class FireBaseDao {
                 }
     }
 
-    private fun updateGroupFinalMessage(finalMessage: String?="",groupId: String){
-        db.collection("Groups").document(groupId).update("recentMessage",finalMessage)
+    private fun updateGroupFinalMessage(finalMessage: Message,groupId: String){
+        db.collection("Groups").document(groupId).update("recentMessage",finalMessage.messageText)
+        db.collection("Groups").document(groupId).update("timeOfLastMessage",finalMessage.sendAt?.toDate()?.toString("yyyy/MM/dd HH:mm:ss"))
     }
 }
