@@ -2,13 +2,9 @@ package com.example.chatapp.ui.chat_fragment
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.databinding.FragmentChatBinding
@@ -32,12 +28,13 @@ class ChatFragment:Fragment() {
     ): View{
         binding= FragmentChatBinding.inflate(inflater)
 
+
+
         args.group?.groupId?.let {
             viewModelFactory = ChatViewModelFactory(it)
         }
 
         viewModel= ViewModelProvider(this,viewModelFactory)[ChatViewModel::class.java]
-
         return binding.root
     }
 
@@ -56,6 +53,7 @@ class ChatFragment:Fragment() {
         viewModel.chats.observe(viewLifecycleOwner){
             Log.d(TAG, "onViewCreated: $it")
             chatRecyclerViewAdapter.submitList(it)
+            binding.ChatsRecyclerView.scrollToPosition(chatRecyclerViewAdapter.itemCount-1)
 
         }
 

@@ -3,7 +3,6 @@ package com.example.chatapp.ui.chat_fragment
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.chatapp.data.FireBaseDao
-import com.example.chatapp.domain.models.Group
 import com.example.chatapp.domain.models.Message
 import com.example.chatapp.utils.Constants.TAG
 import kotlinx.coroutines.ExperimentalCoroutinesApi

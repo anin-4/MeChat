@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chat_app_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/fragmentGroups">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.chatapp.ui.login_fragment.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="Login">
         <action
             android:id="@+id/action_loginFragment_to_fragmentGroups"
-            app:destination="@id/fragmentGroups" />
+            app:destination="@id/fragmentGroups"
+            app:popUpTo="@id/fragmentGroups"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragmentGroups"
         android:name="com.example.chatapp.ui.groups_fragment.DisplayGroupsFragment"
-        android:label="FragmentGroups" >
+        android:label="Groups">
         <action
             android:id="@+id/action_fragmentGroups_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_fragmentGroups_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.chatapp.ui.chat_fragment.ChatFragment"
-        android:label="ChatFragment" >
+        android:label="{labelName}" >
         <argument
             android:name="group"
             app:argType="com.example.chatapp.domain.models.Group"
             app:nullable="true"
             android:defaultValue="@null" />
+        <argument
+            android:name="labelName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Chat" />
+        <action
+            android:id="@+id/action_chatFragment_to_fragmentGroups"
+            app:destination="@id/fragmentGroups"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

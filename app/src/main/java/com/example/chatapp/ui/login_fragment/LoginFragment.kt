@@ -42,12 +42,6 @@ class LoginFragment:Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        auth.currentUser?.let{
-            findNavController().navigate(R.id.action_loginFragment_to_fragmentGroups)
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.signInButton.setOnClickListener {

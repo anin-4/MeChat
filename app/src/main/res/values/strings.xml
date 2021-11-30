@@ -10,4 +10,5 @@
     <string name="received_text">received Text</string>
     <string name="send_text">send text</string>
     <string name="new_message">Start a new Message</string>
+    <string name="logout">Logout</string>
 </resources>
