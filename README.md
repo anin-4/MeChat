@@ -10,7 +10,8 @@ Simply clone the project and open it using Android studio and run
 
 ## The groups page
 
-![img1 (1)](https://user-images.githubusercontent.com/66209574/177481956-ccb7412b-e80d-43bc-93d0-b48b069adcdf.jpg)
+
+![WhatsApp Image 2022-07-06 at 1 17 31 PM](https://user-images.githubusercontent.com/66209574/177498289-6421c9c6-d8b5-465a-8f4a-4a418c38ea4a.jpg)
 
 ## Chatting section
 
