@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">chatApp</string>
+    <string name="app_name">MeChat</string>
     <string name="profile_picture">Profile picture</string>
     <string name="add_groups">Add groups</string>
     <string name="group_name">Group Name</string>
