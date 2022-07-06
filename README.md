@@ -6,7 +6,7 @@ of this app is made using Firestore. Users can sign in via their google acccount
 
 Simply clone the project and open it using Android studio and run
 
-#Demo
+# Demo
 
 ## The groups page
 
