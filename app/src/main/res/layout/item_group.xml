@@ -38,7 +38,7 @@
                         android:id="@+id/groupImageView"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/_c3dda1d3c9e69fbadab86d1b3e1bac3"
+                        android:src="@drawable/screenshot_2020_11_25_21_38_44_66"
                         android:contentDescription="@string/profile_picture" />
 
                 </androidx.cardview.widget.CardView>
